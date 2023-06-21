@@ -1,8 +1,7 @@
 # Internship / Attachment Platform
 
 Django-based internship/attachment platform that focuses on real-world projects and equips learners with relevant skills:
-
-1. User Registration and Profiles:
+## User Registration and Profiles:
 
 - Allow learners to register and create user profiles.
 - Gather information about their fields of study, skills, and interests.
