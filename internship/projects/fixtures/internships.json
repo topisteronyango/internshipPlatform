@@ -1,0 +1,10 @@
+[
+{
+  "model": "projects.internship",
+  "pk": 3,
+  "fields": {
+    "title": "The Crimson Witch",
+    "slug": "the-crimson-witch"
+  }
+}
+]
