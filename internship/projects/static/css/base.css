@@ -30,17 +30,9 @@ h1 {
 }
 
 .module {
-    /* padding:10px 20px; */
-    /* float:left; */
+    padding:10px 20px;
+    float:left;
     width:600px;
-    /* float: none; */
-    /* display: flex; */
-    /* width: 100%; */
-    /* justify-content: center; */
-    margin-left: 500px;
-    /* outline: dashed 1px black; */
-    position: relative;
-    /* margin: auto; */
 }
 
 .module h3 {
@@ -50,11 +42,9 @@ h1 {
 }
 
 .module p {
-    /* margin:10px 0 20px; */
-    /* width:100%; */
-    /* float:left; */
-    /* text-align: center; */
-    /* margin-left: 00px; */
+    margin:10px 0 20px;
+    width:100%;
+    float:left;
 }
 
 #header {
