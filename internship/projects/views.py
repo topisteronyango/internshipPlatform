@@ -100,11 +100,11 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         return Form(*args, **kwargs)
  
     def dispatch(self, request, project_id, model_name, id=None):
-        self.project = get_object_or_404(Project, id=project_id, specialization_lead=request.user)
+        self.project = get_object_or_404(Project, id=project_id, specialization__project_lead=request.user)
         self.model = self.get_model(model_name)
         if id:
             self.obj = get_object_or_404(self.model, id=id,project_lead=request.user)
-        return super().dispatch(request, Project_id, model_name, id)
+        return super().dispatch(request, project_id, model_name, id)
 
     def get(self, request, project_id, model_name, id=None):
         form = self.get_form(self.model, instance=self.obj)
