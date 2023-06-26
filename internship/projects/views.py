@@ -14,6 +14,8 @@ from .forms import ModuleFormSet
 from django.forms.models import modelform_factory
 from django.apps import apps
 from .models import Project, Content
+from django.template import loader
+
 
 
 
@@ -121,3 +123,21 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
                 Content.objects.create(project=self.project, item=obj)
             return redirect('project_content_list', self.project.id)
         return self.render_to_response({'form': form,'object': self.obj})
+
+class ContentDeleteView(View):
+    def post(self, request, id):
+        content = get_object_or_404(Content, id=id, project__specialization__project_lead=request.user)
+        project = content.project
+        content.item.delete()
+        content.delete()
+        return redirect('project_content_list', project.id)
+
+class ProjectContentListView(TemplateResponseMixin, View):
+    # template = loader.get_template('signup.html')
+    template_name = 'projects/manage/project/content_list.html'
+    # template_name = loader.get_template('projects/manage/project/content_list.html')
+
+
+    def get(self, request, project_id):
+        project = get_object_or_404(Project, id=project_id, specialization__project_lead=request.user)
+        return self.render_to_response({'project': project})

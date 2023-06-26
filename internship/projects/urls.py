@@ -9,4 +9,6 @@ urlpatterns = [
     path('<pk>/project/', views.SpecializationProjectUpdateView.as_view(), name='specialization_project_update'),
     path('project/<int:project_id>/content/<model_name>/create/', views.ContentCreateUpdateView.as_view(), name='project_content_create'),
     path('project/<int:project_id>/content/<model_name>/<id>/', views.ContentCreateUpdateView.as_view(),name='project_content_update'),
+    path('content/<int:id>/delete/', views.ContentDeleteView.as_view(), name='project_content_delete'),
+    path('project/<int:project_id>/', views.ProjectContentListView.as_view(), name='project_content_list'),
 ]
