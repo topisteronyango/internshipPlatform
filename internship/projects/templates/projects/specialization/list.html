@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if internship %}
+    {{ internship.title }} specializations
+  {% else %}
+    All Projects
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <h1>
+    {% if internship %}
+      {{ internship.title }} specializations
+    {% else %}
+      All Projects
+    {% endif %}
+  </h1>
+  <div class="contents">
+    <h3>Internships</h3>
+    <ul id="modules">
+      <li {% if not internship %}class="selected"{% endif %}>
+        <a href="{% url "specialization_list" %}">All</a>
+      </li>
+      {% for i in internships %}
+        <li {% if internship == i %}class="selected"{% endif %}>
+          <a href="{% url "specialization_list_internship" i.slug %}">
+            {{ i.title }}
+            <br>
+            <span>{{ i.total_specializations }} specialization{{ i.total_specializations|pluralize }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="module">
+    {% for specialization in specializations %}
+      {% with internship=specialization.internship %}
+        <h3>
+          <a href="{% url "specialization_detail" specialization.slug %}">
+            {{ specialization.title }}
+          </a>
+        </h3>
+        <p>
+          <a href="{% url "specialization_list_internship" internship.slug %}">{{ internship }}</a>.
+            {{ specialization.total_projects }} projects.
+            Project Lead: {{ specialization.project_lead.get_full_name }}
+        </p>
+      {% endwith %}
+    {% endfor %}
+  </div>
+{% endblock %}

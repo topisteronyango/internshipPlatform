@@ -16,19 +16,15 @@ from django.apps import apps
 from .models import Project, Content
 from django.template import loader
 
+# Using mixins from django-braces
+from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+# Displaying PROJECTs
+from django.db.models import Count
+from .models import Internship
+# Displaying single specialization
+from django.views.generic.detail import DetailView
 
 
-
-# Create your views here.
-
-# class-based views for the projects application
-# class ManageSpecializationListView(ListView):
-#  model = Specialization
-#  template_name = 'projects/manage/specialization/list.html'
-
-#  def get_queryset(self):
-#     qs = super().get_queryset()
-#     return qs.filter(owner=self.request.user)
 
 class Project_LeadMixin:
     def get_queryset(self):
@@ -92,14 +88,18 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
     model = None
     obj = None
     template_name = 'projects/manage/content/form.html'
+    
     def get_model(self, model_name):
         if model_name in ['text', 'video', 'image', 'file']:
             return apps.get_model(app_label='projects', model_name=model_name)
  
         return None
+
+    
     def get_form(self, model, *args, **kwargs):
         Form = modelform_factory(model, exclude=['project_lead', 'order', 'created','updated'])
         return Form(*args, **kwargs)
+    
  
     def dispatch(self, request, project_id, model_name, id=None):
         self.project = get_object_or_404(Project, id=project_id, specialization__project_lead=request.user)
@@ -107,6 +107,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         if id:
             self.obj = get_object_or_404(self.model, id=id,project_lead=request.user)
         return super().dispatch(request, project_id, model_name, id)
+    
 
     def get(self, request, project_id, model_name, id=None):
         form = self.get_form(self.model, instance=self.obj)
@@ -133,11 +134,38 @@ class ContentDeleteView(View):
         return redirect('project_content_list', project.id)
 
 class ProjectContentListView(TemplateResponseMixin, View):
-    # template = loader.get_template('signup.html')
     template_name = 'projects/manage/project/content_list.html'
-    # template_name = loader.get_template('projects/manage/project/content_list.html')
 
 
     def get(self, request, project_id):
         project = get_object_or_404(Project, id=project_id, specialization__project_lead=request.user)
         return self.render_to_response({'project': project})
+
+class ProjectOrderView(CsrfExemptMixin,JsonRequestResponseMixin,View):
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Project.objects.filter(id=id,specialization__project_lead=request.user).update(order=order)
+        return self.render_json_response({'saved': 'OK'})
+
+class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Content.objects.filter(id=id, project__specialization__project_lead=request.user).update(order=order)
+        return self.render_json_response({'saved': 'OK'})
+
+class SpecializationListView(TemplateResponseMixin, View):
+    model = Specialization
+    template_name = 'projects/specialization/list.html'
+    def get(self, request, internship=None):
+        internships = Internship.objects.annotate(
+        total_specialzations=Count('specializations'))
+        projects = Specialization.objects.annotate(
+        total_projects=Count('projects'))
+        if internship:
+            internship = get_object_or_404(Internship, slug=internship)
+            projects = projects.filter(internship=internship)
+        return self.render_to_response({'internships': internships, 'internship': internship, 'projects': projects})
+
+class SpecializationDetailView(DetailView):
+    model = Specialization
+    template_name = 'projects/specialization/detail.html'

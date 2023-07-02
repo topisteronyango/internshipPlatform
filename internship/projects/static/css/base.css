@@ -48,10 +48,10 @@ h1 {
 }
 
 #header {
-    background:#0f28e0;
+    background:#4dcc43;
     overflow:auto;
     padding:10px 20px;
-    border-bottom:6px solid #0f28e0;;
+    border-bottom:6px solid #3fad37;
 }
 
 #header .logo {
@@ -178,7 +178,7 @@ select {
 
 input[type=submit], a.button {
     border-radius:5px;
-    background:#0f28e0;;
+    background:#4dcc43;
     color:#fff;
     font-size:16px;
     text-transform:uppercase;
@@ -194,7 +194,7 @@ a.secondary-button {
 }
 
 input[type=submit]:hover, a.button:hover {
-    background:#374bad;
+    background:#3fad37;
 }
 
 ul#course-modules {

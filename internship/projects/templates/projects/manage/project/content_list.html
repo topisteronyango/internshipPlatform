@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 {% with specialization=project.specialization %}
- <h1>Project "{{ specialization.title }}"</h1>
+ <h1>Project {{ specialization.title }}</h1>
  <div class="contents">
  <h3>Projects</h3>
  <ul id="modules">
@@ -78,3 +78,49 @@
 </div>
 {% endwith %}
 {% endblock %}   
+
+{% block include_js %}
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.13.3/html5sortable.min.js"></script>
+ 
+{% endblock %}
+
+{% block domready %}
+ var options = {
+ method: 'POST',
+ mode: 'same-origin'
+ }
+ const projectOrderUrl = '{% url "project_order" %}';
+
+ sortable('#modules', {
+    forcePlaceholderSize: true,
+    placeholderClass: 'placeholder'
+    })[0].addEventListener('sortupdate', function(e) {
+        projectsOrder = {};
+        var projects = document.querySelectorAll('#modules li');
+        projects.forEach(function (project, index) {
+        // update project index
+        projectsOrder[project.dataset.id] = index;
+        // update index in HTML element
+        project.querySelector('.order').innerHTML = index + 1;
+        // add new order to the HTTP request options
+        options['body'] = JSON.stringify(projectsOrder);
+        // send HTTP request
+        fetch(projectOrderUrl, options)
+        });
+        });
+        const contentOrderUrl = '{% url "content_order" %}';
+        sortable('#module-contents', {
+            forcePlaceholderSize: true,
+            placeholderClass: 'placeholder'})[0].addEventListener('sortupdate', function(e) {
+                contentOrder = {};
+                var contents = document.querySelectorAll('#module-contents div');
+                contents.forEach(function (content, index) {
+                // update content index
+                contentOrder[content.dataset.id] = index;
+                // add new order to the HTTP request options
+                options['body'] = JSON.stringify(contentOrder);
+                // send HTTP request
+                fetch(contentOrderUrl, options)
+ });
+ });
+{% endblock %}

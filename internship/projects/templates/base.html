@@ -23,17 +23,22 @@
         {% block content %}
         {% endblock %}
     </div>
-
-    {% block domready %}
-        <script>
-            document.addEventListener('DOMContentLoaded', (event) => {
-                // DOM loaded
-            });
-            // Your code for the domready block goes here
-        </script>
+    {% block include_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5sortable/0.13.3/html5sortable.min.js"></script>
     {% endblock %}
+    
+
+    <!-- {% block domready %} -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // DOM loaded
+        })
+    </script>
 
     
+
+    <!-- {% endblock %}     -->
 
 </body>
 

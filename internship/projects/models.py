@@ -41,7 +41,7 @@ class Project(models.Model):
     order = OrderField(blank=True, for_fields=['specialization'])
 
     class Meta:
-        ordering = ['order']
+        ordering = ['-order']
 
     def __str__(self):
         return f'{self.order}. {self.title}'
@@ -49,19 +49,19 @@ class Project(models.Model):
 
 
 class Content(models.Model):
-    project = models.ForeignKey(Project,
-    related_name='contents',
-    on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, related_name='contents', on_delete=models.CASCADE)
     # content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, 
     limit_choices_to={'model__in':('text','video','image','file')}, null=True, default=None)
     order = OrderField(blank=True, for_fields=['project'])
+    # order = OrderField(blank=True, for_fields=['specialization'])
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
 
     class Meta:
-        ordering = ['order']
+        ordering = ['-order']
 
 class ItemBase(models.Model):
     owner = models.ForeignKey(User,
