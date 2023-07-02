@@ -11,7 +11,7 @@
 {% block content %}
   <h1>
     {% if internship %}
-      {{ internship.title }} specializations
+      {{ internship.title }} specialization
     {% else %}
       All Projects
     {% endif %}
@@ -27,13 +27,15 @@
           <a href="{% url "specialization_list_internship" i.slug %}">
             {{ i.title }}
             <br>
-            <span>{{ i.total_specializations }} specialization{{ i.total_specializations|pluralize }}</span>
+            <span>{{ i.total_specializations }} internship{{ i.total_specializations|pluralize }}</span>
           </a>
         </li>
+        
       {% endfor %}
     </ul>
   </div>
   <div class="module">
+    <!-- specializations or projects-->
     {% for specialization in specializations %}
       {% with internship=specialization.internship %}
         <h3>
@@ -49,4 +51,6 @@
       {% endwith %}
     {% endfor %}
   </div>
+
+ 
 {% endblock %}

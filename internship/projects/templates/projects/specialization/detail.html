@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+ {{ object.title }}
+{% endblock %}
+{% block content %}
+ {% with internship=object.internship %}
+ <h1>
+ {{ object.title }}
+ </h1>
+ <div class="module">
+ <h2>Overview</h2>
+ <p>
+ <a href="{% url "specialization_list_internship" internship.slug %}">
+ {{ internship.title }}</a>.
+ {{ object.projects.count }} projects.
+ Project Lead: {{ object.project_lead.get_full_name }}
+ </p>
+ {{ object.overview|linebreaks }}
+ </div>
+ {% endwith %}
+{% endblock %}

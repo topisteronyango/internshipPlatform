@@ -26,6 +26,7 @@ from django.views.generic.detail import DetailView
 
 
 
+
 class Project_LeadMixin:
     def get_queryset(self):
         qs = super().get_queryset()
@@ -157,14 +158,12 @@ class SpecializationListView(TemplateResponseMixin, View):
     model = Specialization
     template_name = 'projects/specialization/list.html'
     def get(self, request, internship=None):
-        internships = Internship.objects.annotate(
-        total_specialzations=Count('specializations'))
-        projects = Specialization.objects.annotate(
-        total_projects=Count('projects'))
+        internships = Internship.objects.annotate(total_specializations=Count('specializations'))
+        specializations = Specialization.objects.annotate(total_projects=Count('projects'))
         if internship:
             internship = get_object_or_404(Internship, slug=internship)
             projects = projects.filter(internship=internship)
-        return self.render_to_response({'internships': internships, 'internship': internship, 'projects': projects})
+        return self.render_to_response({'internships': internships, 'internship': internship, 'specializations': specializations})
 
 class SpecializationDetailView(DetailView):
     model = Specialization

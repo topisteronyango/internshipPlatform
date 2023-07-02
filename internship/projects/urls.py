@@ -15,4 +15,6 @@ urlpatterns = [
     path('content/order/', views.ContentOrderView.as_view(), name='content_order'),
     path('internship/<slug:internship>/', views.SpecializationListView.as_view(), name='specialization_list_internship'),
     path('<slug:slug>/', views.SpecializationDetailView.as_view(), name='specialization_detail'),
+
+    
 ]
