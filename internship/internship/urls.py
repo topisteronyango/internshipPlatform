@@ -31,6 +31,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('project/', include('projects.urls')),
     path('', SpecializationListView.as_view(), name='specialization_list'),
+    path('students/', include('students.urls')),
 
 ]
 

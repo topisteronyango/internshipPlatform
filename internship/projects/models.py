@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from .fields import OrderField
+from django.template.loader import render_to_string
 
 
 
@@ -27,6 +28,7 @@ class Specialization(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
+    students = models.ManyToManyField(User, related_name='specializations_joined', blank=True)
     class Meta:
         ordering = ['-created']
     def __str__(self):
@@ -64,12 +66,15 @@ class Content(models.Model):
         ordering = ['-order']
 
 class ItemBase(models.Model):
-    owner = models.ForeignKey(User,
+    project_lead = models.ForeignKey(User,
     related_name='%(class)s_related',
     on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def render(self):
+        return render_to_string(f'projects/content/{self._meta.model_name}.html', {'item': self})
     class Meta:
         abstract = True
     def __str__(self):

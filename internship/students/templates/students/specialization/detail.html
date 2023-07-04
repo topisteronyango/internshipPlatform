@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+ {{ object.title }}
+{% endblock %}
+{% block content %}
+ <h1>
+ {{ project.title }}
+ </h1>
+ <div class="contents">
+ <h3>Projecs</h3>
+ <ul id="modules">
+ {% if object.projects.all %}
+ {% for p in object.projects.all %}
+ <li data-id="{{ p.id }}" {% if p == project %}class="selected"{% endif %}>
+ <a href="{% url "student_specialization_detail_project" object.id p.id %}">
+ <span>
+ Project <span class="order">{{ p.order|add:1 }}</span>
+ </span>
+ <br>
+ {{ p.title }}
+ </a>
+ </li>
+ {% endfor %}
+ {% else %}
+       <li>No projects yet.</li>
+ {% endif %}
+    </ul>
+
+
+ </div>
+ <div class="module">
+ {% for content in project.contents.all %}
+ {% with item=content.item %}
+ <h2>{{ item.title }}</h2>
+ {{ item.render }}
+ {% endwith %}
+ {% endfor %}
+ </div>
+{% endblock %}

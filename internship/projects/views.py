@@ -23,6 +23,8 @@ from django.db.models import Count
 from .models import Internship
 # Displaying single specialization
 from django.views.generic.detail import DetailView
+from students.forms import SpecializationEnrollForm
+
 
 
 
@@ -107,6 +109,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         self.model = self.get_model(model_name)
         if id:
             self.obj = get_object_or_404(self.model, id=id,project_lead=request.user)
+        # return super().dispatch(request, project_lead_id, model_name, id)
         return super().dispatch(request, project_id, model_name, id)
     
 
@@ -168,3 +171,9 @@ class SpecializationListView(TemplateResponseMixin, View):
 class SpecializationDetailView(DetailView):
     model = Specialization
     template_name = 'projects/specialization/detail.html'
+
+    # template_name = 'courses/course/detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['enroll_form'] = SpecializationEnrollForm(initial={'specialization':self.object})
+        return context
