@@ -1,6 +1,6 @@
 # Internship / Attachment Platform
 
-Django-based internship/attachment platform that focuses on real-world projects and equips learners with relevant skills
+Django-based internship/attachment platform that uses hackathons and projects during their internship period to build products and focuses on real-world projects and equips learners with relevant skills
 
 ## Features of the Platform:
 ### User Registration and Profiles
