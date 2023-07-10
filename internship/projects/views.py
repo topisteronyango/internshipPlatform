@@ -165,14 +165,16 @@ class SpecializationListView(TemplateResponseMixin, View):
         specializations = Specialization.objects.annotate(total_projects=Count('projects'))
         if internship:
             internship = get_object_or_404(Internship, slug=internship)
-            projects = projects.filter(internship=internship)
+            # projects = projects.filter(internship=internship)
+            specializations = specializations.filter(internship=internship)
         return self.render_to_response({'internships': internships, 'internship': internship, 'specializations': specializations})
+
+
 
 class SpecializationDetailView(DetailView):
     model = Specialization
     template_name = 'projects/specialization/detail.html'
 
-    # template_name = 'courses/course/detail.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['enroll_form'] = SpecializationEnrollForm(initial={'specialization':self.object})
