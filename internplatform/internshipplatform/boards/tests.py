@@ -1,5 +1,8 @@
 from django.test import TestCase
-from django.core.urlresolvers import reverse
+from django.urls import resolve, Resolver404
+from django.urls import reverse
+from .views import home
+
 
 # Create your tests here.
 
@@ -8,3 +11,7 @@ class HomeTests(TestCase):
         url = reverse('home')
         response = self.client.get(url)
         self.assertEquals(response.status_code, 200)
+
+    def test_home_url_resolves_home_view(self):
+        view = resolve('/myboards/')
+        self.assertEquals(view.func, home)

@@ -1,0 +1,58 @@
+{% load static %}
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid ">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-2">
+                            <div class="logo">
+                                <a href="./base.html">
+                                    <img src="../static/img/logo.png" alt="" style="width: 50px;height: 50px;">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="/">home</a></li>
+                                        <li><a href="{% url 'jobs:job-list' %}">Browse Internships</a></li>
+                                        <li><a href="{% url 'jobs:job-list' %}">Blog</a></li>
+                                        <li><a href="{% url 'jobs:job-list' %}">Discussion Board</a></li>
+
+
+                                       {% comment %} <li><a href="{% url 'contact:contact' %}">Contact Us</a></li>{% endcomment%}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="Appointment">
+                            
+                                {% if request.user.is_authenticated %}
+                                <div class="phone_num d-none d-xl-block">
+                                    <a href="{% url 'accounts:profile' %}">Profile</a>
+                                </div>
+                                {% else %}
+                                    <div class="phone_num d-none d-xl-block">
+                                        <a href="{% url 'login' %}">Login</a>
+                                    </div>
+                                {% endif %}
+                            
+                                
+                                <div class="d-none d-lg-block">
+                                    <a class="boxed-btn4" href="{% url 'jobs:add-job' %}">Post Internship</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
