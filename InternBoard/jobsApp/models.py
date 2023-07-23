@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 
 
 JOB_TYPE = (
-    ('Full Time','Full Time'),
-    ('Part Time','Part Time'),
+    ('Six Months','Six Months'),
+    ('Three Months','Three Months'),
     )
 
 def image_upload(instance,filename):
@@ -72,8 +72,3 @@ class Apply(models.Model):
     class Meta:
         db_table = "applications_table"
 
-
-
-# M - models
-# V - views
-# T - templates

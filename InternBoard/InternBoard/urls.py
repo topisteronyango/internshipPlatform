@@ -21,5 +21,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')), # a build in feature from django
     path('accounts/', include('accounts.urls',namespace='accounts')),
     path('admin/', admin.site.urls),
-    path('', include('jobsApp.urls', namespace='jobs'))
+    path('', include('jobsApp.urls', namespace='jobs')),
+    path('boards/', include('boards.urls', namespace='boards')),
 ]

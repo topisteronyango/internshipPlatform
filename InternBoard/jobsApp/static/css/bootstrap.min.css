@@ -13,7 +13,7 @@
     --red: #dc3545;
     --orange: #fd7e14;
     --yellow: #ffc107;
-    --green: #28a745;
+    --green: #0046d3;
     --teal: #20c997;
     --cyan: #17a2b8;
     --white: #fff;
@@ -21,7 +21,7 @@
     --gray-dark: #343a40;
     --primary: #007bff;
     --secondary: #6c757d;
-    --success: #28a745;
+    --success: #0046d3;
     --info: #17a2b8;
     --warning: #ffc107;
     --danger: #dc3545;
@@ -2284,7 +2284,7 @@ select.form-control-lg:not([size]):not([multiple]) {
     width: 100%;
     margin-top: .25rem;
     font-size: 80%;
-    color: #28a745
+    color: #0046d3
 }
 
 .valid-tooltip {
@@ -2306,14 +2306,14 @@ select.form-control-lg:not([size]):not([multiple]) {
 .form-control.is-valid,
 .was-validated .custom-select:valid,
 .was-validated .form-control:valid {
-    border-color: #28a745
+    border-color: #0046d3
 }
 
 .custom-select.is-valid:focus,
 .form-control.is-valid:focus,
 .was-validated .custom-select:valid:focus,
 .was-validated .form-control:valid:focus {
-    border-color: #28a745;
+    border-color: #0046d3;
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
 }
 
@@ -2330,7 +2330,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 
 .form-check-input.is-valid~.form-check-label,
 .was-validated .form-check-input:valid~.form-check-label {
-    color: #28a745
+    color: #0046d3
 }
 
 .form-check-input.is-valid~.valid-feedback,
@@ -2342,7 +2342,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 
 .custom-control-input.is-valid~.custom-control-label,
 .was-validated .custom-control-input:valid~.custom-control-label {
-    color: #28a745
+    color: #0046d3
 }
 
 .custom-control-input.is-valid~.custom-control-label::before,
@@ -2369,7 +2369,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 
 .custom-file-input.is-valid~.custom-file-label,
 .was-validated .custom-file-input:valid~.custom-file-label {
-    border-color: #28a745
+    border-color: #0046d3
 }
 
 .custom-file-input.is-valid~.custom-file-label::before,
@@ -2714,8 +2714,8 @@ fieldset:disabled a.btn {
 
 .btn-success {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #0046d3;
+    border-color: #0046d3
 }
 
 .btn-success:hover {
@@ -2732,8 +2732,8 @@ fieldset:disabled a.btn {
 .btn-success.disabled,
 .btn-success:disabled {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #0046d3;
+    border-color: #0046d3
 }
 
 .btn-success:not(:disabled):not(.disabled).active,
@@ -3017,16 +3017,16 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-success {
-    color: #28a745;
+    color: #0046d3;
     background-color: transparent;
     background-image: none;
-    border-color: #28a745
+    border-color: #0046d3
 }
 
 .btn-outline-success:hover {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #0046d3;
+    border-color: #0046d3
 }
 
 .btn-outline-success.focus,
@@ -3036,7 +3036,7 @@ fieldset:disabled a.btn {
 
 .btn-outline-success.disabled,
 .btn-outline-success:disabled {
-    color: #28a745;
+    color: #0046d3;
     background-color: transparent
 }
 
@@ -3044,8 +3044,8 @@ fieldset:disabled a.btn {
 .btn-outline-success:not(:disabled):not(.disabled):active,
 .show>.btn-outline-success.dropdown-toggle {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #0046d3;
+    border-color: #0046d3
 }
 
 .btn-outline-success:not(:disabled):not(.disabled).active:focus,
@@ -5088,7 +5088,7 @@ tbody.collapse.show {
 
 .badge-success {
     color: #fff;
-    background-color: #28a745
+    background-color: #0046d3
 }
 
 .badge-success[href]:focus,
@@ -6376,7 +6376,7 @@ button.bg-secondary:hover {
 }
 
 .bg-success {
-    background-color: #28a745!important
+    background-color: #0046d3!important
 }
 
 a.bg-success:focus,
@@ -6498,7 +6498,7 @@ button.bg-dark:hover {
 }
 
 .border-success {
-    border-color: #28a745!important
+    border-color: #0046d3!important
 }
 
 .border-info {
@@ -9130,7 +9130,7 @@ a.text-secondary:hover {
 }
 
 .text-success {
-    color: #28a745!important
+    color: #0046d3!important
 }
 
 a.text-success:focus,

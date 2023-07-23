@@ -7,7 +7,6 @@ from .filter import JobFilter
 from django.core.paginator import Paginator
 
 
-
 def joblist(request):
     jobs = Job.objects.all()
 
@@ -37,7 +36,7 @@ def job_detail(request, slug):
                     myform = form.save(commit=False)
                     myform.job = job_detail
                     myform.save()
-                    print('Done')
+                    print('Posted Successfully')
 
     else:
         form = ApplyForm()
