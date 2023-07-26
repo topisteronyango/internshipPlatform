@@ -8,6 +8,7 @@ app_name = 'boards'
 urlpatterns = [
     path('', views.home, name='home'),
     path('boards/<pk>/', views.board_topics, name='board_topics'),
+    path('boards/<pk>/new/', views.new_topic, name='new_topic'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -19,10 +19,7 @@
                                         <li><a href="/">home</a></li>
                                         <li><a href="{% url 'jobs:job-list' %}">Browse Internships</a></li>
                                         <li><a href="{% url 'jobs:job-list' %}">Blog</a></li>
-                                        <li><a href="{% url 'jobs:job-list' %}">Discussion Board</a></li>
-
-
-                                       {% comment %} <li><a href="{% url 'contact:contact' %}">Contact Us</a></li>{% endcomment%}
+                                        <li><a href="{% url 'jobs:job-list' %}">Discussion Forum</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -31,17 +28,32 @@
                             <div class="Appointment">
                             
                                 {% if request.user.is_authenticated %}
-                                <div class="phone_num d-none d-xl-block">
-                                    <a href="{% url 'accounts:profile' %}">Profile</a>
-                                </div>
+
+                                    <ul class="navbar-nav ml-auto">
+                                      <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle m-3" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: capitalize; color: white;">
+                                          {{ user.username }}
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                                          <a class="dropdown-item" href="#">My account</a>
+                                          <a class="dropdown-item" href="#">Change password</a>
+                                          <div class="dropdown-divider"></div>
+                                          <a class="dropdown-item" href="{% url 'accounts:logout' %}">Log out</a>
+                                        </div>
+                                      </li>
+                                    </ul>
+
+
                                 {% else %}
-                                    <div class="phone_num d-none d-xl-block">
-                                        <a href="{% url 'login' %}">Login</a>
-                                    </div>
-                                {% endif %}
+                                <form class="form-inline ml-auto">
+                                  <a href="{% url 'accounts:login' %}" class="btn bg-light btn-primary boxed-btn4">Log in</a>
+
+                                  <a href="{% url 'accounts:signup' %}" class="btn bg-light btn-primary m-3 boxed-btn4">Sign up</a>
+                                </form>
+                              {% endif %}
                             
                                 
-                                <div class="d-none d-lg-block">
+                                <div class="d-none d-lg-block bg-light rounded">
                                     <a class="boxed-btn4" href="{% url 'jobs:add-job' %}">Post Internship</a>
                                 </div>
                             </div>

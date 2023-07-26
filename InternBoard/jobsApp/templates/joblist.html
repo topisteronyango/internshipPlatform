@@ -11,7 +11,6 @@
             <div class="col-xl-12">
                 <div class="bradcam_text">
                     <h3>{{jobs|length}}+ Internships Available</h3>
-                    <!-- <h3>{{jobs.count}} + Jobs Available</h3> -->
 
                 </div>
             </div>
@@ -27,8 +26,8 @@
             <div class="col-lg-3">
                 <div class="job_filter white-bg">
                     <div class="form_inner white-bg">
-                        <h3>Filter</h3>
-                        <form method="GET">
+                        <h3>Filter options</h3>
+                        <form method="GET" >
                             {% bootstrap_form myfilter.form %}
                             <input type="submit" value="Search" class="boxed-btn3 w-100 mt-2"  style="background-color:#0046d3;">
                         </form>
