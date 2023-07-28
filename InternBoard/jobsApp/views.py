@@ -23,7 +23,8 @@ def joblist(request):
         "myfilter": myfilter
     }
     return render(request, "joblist.html", context)
-
+    
+@login_required
 def job_detail(request, slug):
     job_detail = Job.objects.get(slug=slug) # will retrieve on job
     # job_detail = Job.object.filter() # will retrieve on job from a list according to some filtration
@@ -47,7 +48,7 @@ def job_detail(request, slug):
            }
     return render(request,'jobdetail.html', context)
 
-# @login_required
+@login_required
 def add_job(request):
     if request.method=='POST':
         pass
