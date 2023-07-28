@@ -1,5 +1,10 @@
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.generic import UpdateView
 # from .models import Profile, UserForm , ProfileForm
 
 from .forms import SignUpForm
@@ -75,6 +80,8 @@ def signup(request):
 # 1. It retrieves the Profile object for the current user by calling the get method on the Profile model's objects attribute and passing it the user field of the request object.
 # 2. It renders the profile.html template and passes the Profile object as the profile variable to the template.
 # '''
+
+
 def profile(request):
     profile = Profile.objects.get(user=request.user) #OOP
     return render(request,'accounts/profile.html',{'profile': profile})
@@ -107,3 +114,13 @@ def profile_edit(request):
         profileform = ProfileForm(instance=profile)
 
     return render(request,'accounts/profile_edit.html',{'userform':userform , 'profileform':profileform})
+
+@method_decorator(login_required, name='dispatch')
+class UserUpdateView(UpdateView):
+    model = User
+    fields = ('first_name', 'last_name', 'email', )
+    template_name = 'myaccount.html'
+    success_url = reverse_lazy('myaccount')
+
+    def get_object(self):
+        return self.request.user

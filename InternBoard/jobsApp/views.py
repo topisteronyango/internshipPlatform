@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .filter import JobFilter
 from django.core.paginator import Paginator
 
-
 def joblist(request):
     jobs = Job.objects.all()
 

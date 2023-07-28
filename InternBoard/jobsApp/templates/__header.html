@@ -19,7 +19,7 @@
                                         <li><a href="/">home</a></li>
                                         <li><a href="{% url 'jobs:job-list' %}">Browse Internships</a></li>
                                         <li><a href="{% url 'jobs:job-list' %}">Blog</a></li>
-                                        <li><a href="{% url 'jobs:job-list' %}">Discussion Forum</a></li>
+                                        <li><a href="{% url 'boards:home' %}">Discussion Forums</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -38,7 +38,7 @@
                                           <a class="dropdown-item" href="#">My account</a>
                                           <a class="dropdown-item" href="#">Change password</a>
                                           <div class="dropdown-divider"></div>
-                                          <a class="dropdown-item" href="{% url 'accounts:logout' %}">Log out</a>
+                                          <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
                                         </div>
                                       </li>
                                     </ul>
