@@ -26,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('jobsApp.urls', namespace='jobs')),
     path('boards/', include('boards.urls', namespace='boards')),
+    path('blog/', include('blog.urls', namespace='blog')),
     
 ]
