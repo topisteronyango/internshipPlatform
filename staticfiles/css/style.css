@@ -2504,14 +2504,15 @@ h3 {
 /* line 201, ../../Arafath/CL/December/235. Job board/HTML/scss/_footer.scss */
 .footer .socail_links ul li:hover a {
   color: #fff !important;
-  background: #0046d3;
+  background: #180de8;
   border-color: transparent;
-  border: 1px solid #0046d3;
+  border: 1px solid #0015d3;
 }
 
 /* line 1, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
 .bradcam_bg_1 {
-  background-image: url(../img/banner/bradcam.png);
+  background-image: url(../img/banner/banner.png);
+
 }
 
 /* line 4, ../../Arafath/CL/December/235. Job board/HTML/scss/_bradcam.scss */
@@ -2523,6 +2524,7 @@ h3 {
   position: relative;
   z-index: 0;
   background-size: cover;
+  height: 50px;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2545,7 +2547,7 @@ h3 {
   color: #fff;
   font-weight: 400;
   margin-bottom: 0;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 @media (max-width: 767px) {

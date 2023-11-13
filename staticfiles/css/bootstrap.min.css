@@ -3051,7 +3051,7 @@ fieldset:disabled a.btn {
 .btn-outline-success:not(:disabled):not(.disabled).active:focus,
 .btn-outline-success:not(:disabled):not(.disabled):active:focus,
 .show>.btn-outline-success.dropdown-toggle:focus {
-    box-shadow: 0 0 0 .2rem rgba(40, 40, 167, 0.5)
+    box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5)
 }
 
 .btn-outline-info {
