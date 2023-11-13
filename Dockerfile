@@ -14,7 +14,8 @@ WORKDIR /app
 
 COPY requirements.txt ./
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt 2>&1 | tee install.log
+
 
 COPY . .
 
