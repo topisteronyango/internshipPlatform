@@ -1,1 +1,0 @@
-web: gunicorn InternBoard.wsgi:application --log-file - --log-level debug
