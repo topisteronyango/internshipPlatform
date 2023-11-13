@@ -1,6 +1,6 @@
 # web: gunicorn InternBoard.wsgi:application --log-file - --log-level debug
 
-FROM python:3.10.0-slim
+FROM python:3.10.12-slim
 
 # install needed packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
