@@ -20,4 +20,6 @@ RUN pip install -r requirements.txt 2>&1 | tee install.log
 COPY . .
 
 # CMD gunicorn InternBoard.wsgi
-CMD gunicorn InternBoard.wsgi:application --log-file - --log-level debug
+# CMD gunicorn InternBoard.wsgi:application --log-file - --log-level debug
+
+CMD ["gunicorn", "InternBoard.wsgi:application", "--log-file", "-", "--log-level", "debug"]
